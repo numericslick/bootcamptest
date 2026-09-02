@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { navLinks } from "@/app/_data/landing"
+import { useState } from "react";
+import Link from "next/link";
+import { navLinks } from "@/app/_data/landing";
 
 export default function Nav() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/[.08] bg-white/90 backdrop-blur dark:border-white/[.1] dark:bg-black/90">
@@ -29,6 +29,12 @@ export default function Nav() {
             className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
           >
             Doctors
+          </Link>
+          <Link
+            href="/patients"
+            className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
+          >
+            Patients
           </Link>
           <Link
             href="/chat"
@@ -80,6 +86,13 @@ export default function Nav() {
             Doctors
           </Link>
           <Link
+            href="/patients"
+            onClick={() => setOpen(false)}
+            className="text-sm font-medium text-zinc-600 dark:text-zinc-400"
+          >
+            Patients
+          </Link>
+          <Link
             href="/chat"
             onClick={() => setOpen(false)}
             className="text-sm font-medium text-zinc-600 dark:text-zinc-400"
@@ -95,5 +108,5 @@ export default function Nav() {
         </nav>
       )}
     </header>
-  )
+  );
 }

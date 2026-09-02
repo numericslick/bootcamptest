@@ -11,6 +11,12 @@ export interface IDoctor {
   name: string;
   specialty: string;
 }
+export interface IPatient {
+  name: string;
+  age: string;
+  email: string;
+  phone: string;
+}
 
 export interface IChatMessage {
   role: "user" | "assistant";

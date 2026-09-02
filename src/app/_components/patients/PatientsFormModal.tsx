@@ -1,39 +1,46 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Doctor } from "@/generated/prisma/client";
-import { IDoctor } from "@/interfaces/interfaces";
+import { Patient } from "@/generated/prisma/client";
+import { IPatient } from "@/interfaces/interfaces";
 
-interface DoctorFormModalProps {
+interface PatientFormModalProps {
   mode: "add" | "edit";
-  initialDoctor?: Doctor | null;
+  initialPatient?: Patient | null;
   isSubmitting: boolean;
   error?: string | null;
   onClose: () => void;
-  onSubmit: (values: IDoctor) => void;
+  onSubmit: (values: IPatient) => void;
 }
 
-export default function DoctorFormModal({
+export default function PatientFormModal({
   mode,
-  initialDoctor,
+  initialPatient,
   isSubmitting,
   error,
   onClose,
   onSubmit,
-}: DoctorFormModalProps) {
-  const [name, setName] = useState(initialDoctor?.name ?? "");
-  const [specialty, setSpecialty] = useState(initialDoctor?.specialty ?? "");
+}: PatientFormModalProps) {
+  const [name, setName] = useState(initialPatient?.name ?? "");
+  const [age, setAge] = useState(initialPatient?.age ?? "");
+  const [email, setEmail] = useState(initialPatient?.email ?? "");
+  const [phone, setPhone] = useState(initialPatient?.phone ?? "");
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    onSubmit({ name: name.trim(), specialty: specialty.trim() });
+    onSubmit({
+      name: name.trim(),
+      age: age.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
+    });
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
       <div className="w-full max-w-sm rounded-2xl border border-black/8 bg-white p-6 shadow-lg dark:border-white/10 dark:bg-zinc-950">
         <h2 className="text-lg font-semibold text-zinc-950 dark:text-zinc-50">
-          {mode === "add" ? "Add doctor" : "Edit doctor"}
+          {mode === "add" ? "Add patient" : "Edit patient"}
         </h2>
 
         <form onSubmit={handleSubmit} className="mt-5 flex flex-col gap-4">
@@ -53,15 +60,43 @@ export default function DoctorFormModal({
 
           <label className="flex flex-col gap-1.5 text-sm">
             <span className="font-medium text-zinc-700 dark:text-zinc-300">
-              Specialty
+              Age
             </span>
             <input
               type="text"
-              value={specialty}
-              onChange={(e) => setSpecialty(e.target.value)}
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
               required
               className="rounded-lg border border-black/10 bg-transparent px-3 py-2 text-sm text-zinc-950 outline-none focus:border-teal-600 dark:border-white/[.15] dark:text-zinc-50"
-              placeholder="Cardiology"
+              placeholder="30"
+            />
+          </label>
+
+          <label className="flex flex-col gap-1.5 text-sm">
+            <span className="font-medium text-zinc-700 dark:text-zinc-300">
+              Email
+            </span>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="rounded-lg border border-black/10 bg-transparent px-3 py-2 text-sm text-zinc-950 outline-none focus:border-teal-600 dark:border-white/[.15] dark:text-zinc-50"
+              placeholder="jane.doe@example.com"
+            />
+          </label>
+
+          <label className="flex flex-col gap-1.5 text-sm">
+            <span className="font-medium text-zinc-700 dark:text-zinc-300">
+              Phone
+            </span>
+            <input
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+              className="rounded-lg border border-black/10 bg-transparent px-3 py-2 text-sm text-zinc-950 outline-none focus:border-teal-600 dark:border-white/[.15] dark:text-zinc-50"
+              placeholder="+1 (555) 123-4567"
             />
           </label>
 
