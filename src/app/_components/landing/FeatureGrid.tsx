@@ -1,4 +1,4 @@
-import { features } from "@/app/_data/landing"
+import { features } from "@/app/_data/landing";
 
 export default function FeatureGrid() {
   return (
@@ -30,5 +30,5 @@ export default function FeatureGrid() {
         ))}
       </div>
     </section>
-  )
+  );
 }

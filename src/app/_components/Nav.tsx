@@ -24,6 +24,18 @@ export default function Nav() {
               {link.label}
             </a>
           ))}
+          <Link
+            href="/doctors"
+            className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
+          >
+            Doctors
+          </Link>
+          <Link
+            href="/chat"
+            className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
+          >
+            Chat
+          </Link>
         </nav>
 
         <div className="hidden md:block">
@@ -60,6 +72,20 @@ export default function Nav() {
               {link.label}
             </a>
           ))}
+          <Link
+            href="/doctors"
+            onClick={() => setOpen(false)}
+            className="text-sm font-medium text-zinc-600 dark:text-zinc-400"
+          >
+            Doctors
+          </Link>
+          <Link
+            href="/chat"
+            onClick={() => setOpen(false)}
+            className="text-sm font-medium text-zinc-600 dark:text-zinc-400"
+          >
+            Chat
+          </Link>
           <Link
             href="/signup"
             className="rounded-full bg-teal-600 px-5 py-2 text-center text-sm font-semibold text-white"

@@ -1,4 +1,6 @@
-import Link from "next/link"
+"use client";
+
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -27,11 +29,6 @@ export default function Hero() {
           See features
         </a>
       </div>
-      <div className="mt-6 w-full max-w-4xl rounded-2xl border border-black/[.08] bg-zinc-50 p-3 shadow-sm dark:border-white/[.1] dark:bg-zinc-900">
-        <div className="flex h-72 items-center justify-center rounded-xl bg-white text-sm text-zinc-400 dark:bg-black dark:text-zinc-600">
-          Dashboard preview
-        </div>
-      </div>
     </section>
-  )
+  );
 }
